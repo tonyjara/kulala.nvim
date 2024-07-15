@@ -1,0 +1,57 @@
+{
+  "$id": "https://github.com/mistweaverco/kulala.nvim/blob/main/schemas/http-client.config.schema.json",
+  "description": "A configuration file for the HTTP client.",
+  "type": "object",
+  "properties": {
+    "automate": {
+      "type": "object",
+      "properties": {
+        "beforeEachRequest": {
+          "type": "object",
+          "dependentRequired": {
+            "internalRequests": [ "externalCommands", "internalRequests" ]
+          }
+        },
+        "afterEachRequest": {
+          "type": "object",
+          "dependentRequired": {
+            "internalRequests": [ "externalCommands", "internalRequests" ]
+          }
+        },
+        "externalCommands": {
+          "type": "array",
+          "properties": {
+            "command": {
+              "type": "string"
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "internalRequests": {
+          "type": "array",
+          "properties": {
+            "method": {
+              "type": "string",
+              "enum": [ "GET", "POST", "PUT", "DELETE" ]
+            },
+            "url": {
+              "type": "string"
+            },
+            "headers": {
+              "type": "object"
+            },
+            "body": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "required": [ "automate" ]
+}

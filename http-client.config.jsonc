@@ -1,0 +1,43 @@
+{
+  "$schema": "http-client.config.schema.json",
+  "automate": {
+    "beforeEachRequest": {
+      "internalRequests": [
+        {
+          "url": "https://jsonplaceholder.typicode.com/posts/1",
+          "method": "GET",
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      ],
+      "externalCommands": [
+        {
+          "command": "echo",
+          "args": [
+            "Hello, World!"
+          ]
+        }
+      ]
+    },
+    "afterEachRequest": {
+      "internalRequests": [
+        {
+          "url": "https://jsonplaceholder.typicode.com/posts/1",
+          "method": "GET",
+          "headers": {
+            "Content-Type": "application/json"
+          }
+        }
+      ],
+      "externalCommands": [
+        {
+          "command": "echo",
+          "args": [
+            "Hello, World!"
+          ]
+        }
+      ]
+    }
+  }
+}
